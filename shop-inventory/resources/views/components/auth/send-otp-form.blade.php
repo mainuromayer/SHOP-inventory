@@ -12,10 +12,12 @@
                             <p class="mb-5" style="font-size: 14px;color: #707070;font-weight: 500;">Enter your
                                 email below to continue</p>
 
+                            <!-- email start -->
                             <div class="form-email form-outline form-white mb-4 d-flex">
                                 <span class="icon-envelope"></span>
                                 <input type="email" id="email" class="" placeholder="E-mail Address">
                             </div>
+                            <!-- email end -->
 
                             <button onclick="SendOTP()"  type="submit" style="font-size: 20px;border: none;width: 100%;height: 50px;border-radius: 15px;background-image: linear-gradient(to right, #0c0958, #00228d, #255d9d);color: #fff;font-weight: 500;">
                                 Next

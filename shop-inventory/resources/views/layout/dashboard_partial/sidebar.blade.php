@@ -1,20 +1,11 @@
-{{--@section('dashboard_styles')--}}
-{{--    <style>--}}
-{{--        .sidebar-dark-dark .nav-sidebar > .nav-item > .nav-link.active, .sidebar-light-dark .nav-sidebar > .nav-item > .nav-link.active {--}}
-{{--            background-image: linear-gradient(to right, #0c0958, #00228d, #255d9d);--}}
-{{--            color: #fff;--}}
-{{--        }--}}
-{{--    </style>--}}
-{{--@endsection--}}
-
 <!-- Main Sidebar Start -->
 <aside class="main-sidebar text-white sidebar-light-dark elevation-1">
     <!-- Brand Logo -->
     <a href="{{ url('/dashboard') }}" class="brand-link">
-        <span class="fw-bold px-3 py-2 mx-1 border rounded">
-            <i class="fa-brands fa-stripe-s"></i>
+        <span class="pl-2">
+            <i style="background-image: linear-gradient(to top right, rgb(12, 9, 88), rgb(0, 34, 141), rgb(37, 93, 157));color: #ffff;" class="fa-solid fa-store p-2 rounded-circle"></i>
         </span>
-        <span class="pl-2 brand-text font-weight-bold">SHOP</span>
+        <span style="color: #514CA1;font-weight: 700;font-size: 22px;" class="pl-2 brand-text font-wight-bold">SHOP</span>
     </a>
 
     <!-- Sidebar -->

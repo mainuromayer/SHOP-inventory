@@ -10,13 +10,17 @@
 
                             <h2 class="mb-4">SET NEW PASSWORD</h2>
 
+                            <!-- new password start -->
                             <div class="form-password form-outline form-white mb-4 d-flex">
                                 <input type="password" id="password" class="" placeholder="New Password">
                             </div>
+                            <!-- new password end -->
 
+                            <!-- confirm password start -->
                             <div class="form-password form-outline form-white mb-4 d-flex">
                                 <input type="password" id="confirm_password" class="" placeholder="Confirm Password">
                             </div>
+                            <!-- confirm password end -->
 
                             <button type="submit" onclick="ResetPassword()" style="font-size: 20px;border: none;width: 100%;height: 50px;border-radius: 15px;background-image: linear-gradient(to right, #0c0958, #00228d, #255d9d);color: #fff;font-weight: 500;">
                                 Next
