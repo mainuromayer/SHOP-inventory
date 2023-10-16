@@ -1,3 +1,4 @@
+<!-- PROFILE FORM START ======================= -->
 <section class="content">
     <div class="container-fluid">
         <div class="row py-5 align-items-center justify-content-center">
@@ -40,7 +41,7 @@
         </div>
     </div>
 </section>
-
+<!-- PROFILE FORM END ========================= -->
 
 
 <script>

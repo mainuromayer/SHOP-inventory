@@ -1,3 +1,4 @@
+<!-- CATEGORY LIST START ======================= -->
 <section class="content">
     <div class="container-fluid">
         <div class="row py-4 align-items-center justify-content-center">
@@ -35,7 +36,7 @@
         </div>
     </div>
 </section>
-
+<!-- CATEGORY LIST END ========================= -->
 
 
 <script src="{{asset('js/jquery.dataTables.min.js')}}"></script>

@@ -1,4 +1,4 @@
-<!-- Navbar Start -->
+<!-- NAVBAR START ======================= -->
 <nav class="main-header navbar navbar-expand sticky-top bg-white">
     <!-- Left navbar links -->
     <ul class="navbar-nav">
@@ -91,5 +91,5 @@
 
     </ul>
 </nav>
-<!-- Navbar End -->
+<!-- NAVBAR END ========================= -->
 

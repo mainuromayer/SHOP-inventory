@@ -93,8 +93,6 @@
     </style>
 </head>
 <body>
-{{----}}
-
 <div class="c-email">
     <div class="c-email__header">
         <h1 class="c-email__header__title">Your Verification Code</h1>
@@ -111,7 +109,5 @@
     </div>
     <div class="c-email__footer"></div>
 </div>
-
-{{----}}
 </body>
 </html>

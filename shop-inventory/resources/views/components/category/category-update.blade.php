@@ -1,3 +1,4 @@
+<!-- CATEGORY UPDATE START ======================= -->
 <div class="modal animated zoomIn" id="update-modal" tabindex="-1" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
     <div class="modal-dialog modal-md modal-dialog-centered">
@@ -29,6 +30,7 @@
         </div>
     </div>
 </div>
+<!-- CATEGORY UPDATE END ========================= -->
 
 
 <script>

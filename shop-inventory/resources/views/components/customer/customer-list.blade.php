@@ -1,3 +1,4 @@
+<!-- CUSTOMER LIST START ======================= -->
 <div class="content">
     <div class="container-fluid">
         <div class="row py-4 align-items-center justify-content-center">
@@ -35,6 +36,8 @@
         </div>
     </div>
 </div>
+<!-- CUSTOMER LIST END ========================= -->
+
 
 <script src="{{asset('js/jquery.dataTables.min.js')}}"></script>
 

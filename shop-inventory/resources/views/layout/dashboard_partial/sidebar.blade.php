@@ -1,19 +1,21 @@
-<!-- Main Sidebar Start -->
+<!-- SIDEBAR START ======================= -->
 <aside class="main-sidebar text-white sidebar-light-dark elevation-1">
-    <!-- Brand Logo -->
+    <!-- brand logo start -->
     <a href="{{ url('/dashboard') }}" class="brand-link">
         <span class="pl-2">
             <i style="background-image: linear-gradient(to top right, rgb(12, 9, 88), rgb(0, 34, 141), rgb(37, 93, 157));color: #ffff;" class="fa-solid fa-store p-2 rounded-circle"></i>
         </span>
         <span style="color: #514CA1;font-weight: 700;font-size: 22px;" class="pl-2 brand-text font-wight-bold">SHOP</span>
     </a>
+    <!-- brand logo end -->
 
-    <!-- Sidebar -->
+    <!-- sidebar start -->
     <div class="sidebar">
 
         <!-- Sidebar Menu -->
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+
                 <!-- <li class="nav-header">Menu</li> -->
 
                 <!-- nav-item-1 | dashboard start -->
@@ -78,13 +80,14 @@
                     </a>
                 </li>
                 <!-- nav-item-7 | report end -->
+                
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
     </div>
-    <!-- /.sidebar -->
+    <!-- sidebar end -->
 </aside>
-<!-- Main Sidebar End -->
+<!-- SIDEBAR END ========================= -->
 
 
 

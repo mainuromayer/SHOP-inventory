@@ -1,3 +1,4 @@
+<!-- PRODUCT DELETE START ======================= -->
 <div class="modal animated zoomIn" id="delete-modal">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
@@ -16,6 +17,7 @@
         </div>
     </div>
 </div>
+<!-- PRODUCT DELETE END ========================= -->
 
 
 <script>

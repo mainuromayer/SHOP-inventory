@@ -1,3 +1,4 @@
+<!-- PRODUCT CREATE START ======================= -->
 <div class="modal animated zoomIn" id="create-modal" tabindex="-1" aria-labelledby="exampleModalLabel"
      aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered modal-md">
@@ -45,6 +46,8 @@
         </div>
     </div>
 </div>
+<!-- PRODUCT CREATE END ========================= -->
+
 
 <script>
     FillCategoryDropDown();
