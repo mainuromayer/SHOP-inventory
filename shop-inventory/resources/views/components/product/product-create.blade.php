@@ -14,17 +14,30 @@
 
                                 <label class="form-label">Category</label>
                                 <select type="text" class="form-control form-select" id="productCategory">
-                                    <option value="">Select Category</option>
+                                    <option value="" disabled selected>-- Select Category --</option>
                                 </select>
 
-                                <label class="form-label mt-2">Name</label>
+                                <label class="form-label mt-2">Product Name</label>
                                 <input type="text" class="form-control" id="productName">
 
-                                <label class="form-label mt-2">Price</label>
+                                <label class="form-label mt-2">Product Type</label>
+                                <input type="text" class="form-control" id="productType">
+
+                                <label class="form-label">Product Description</label>
+                                <textarea class="w-100" id="productDescription"></textarea>
+
+                                <label class="form-label mt-2">Product Price</label>
                                 <input type="text" class="form-control" id="productPrice">
 
-                                <label class="form-label mt-2">Unit</label>
+                                <label class="form-label mt-2">Product Unit</label>
                                 <input type="text" class="form-control" id="productUnit">
+
+                                <label>Product Status</label>
+                                <select type="text" class="form-control form-select" id="productActiveStatus">
+                                    <option value="" disabled selected>-- Select Status --</option>
+                                    <option value="1">Active</option>
+                                    <option value="0">Inactive</option>
+                                </select>
 
                                 <br/>
                                 <img class="w-15" id="newImg" src="{{asset('images/default-img.jpg')}}"/>
@@ -61,40 +74,42 @@
     }
 
 
-
-
     async function Save(){
         let productCategory = document.getElementById('productCategory').value;
+        let productImg = document.getElementById('productImg').files[0];
         let productName = document.getElementById('productName').value;
+        let productType = document.getElementById('productType').value;
+        let productDescription = document.getElementById('productDescription').value;
         let productPrice = document.getElementById('productPrice').value;
         let productUnit = document.getElementById('productUnit').value;
-        let productImg = document.getElementById('productImg').files[0];
-
+        let productActiveStatus = document.getElementById('productActiveStatus').value;
 
         if (productCategory.length === 0) {
-            errorToast("product Category Required !");
-        }
-        else if(productName.length===0){
-            errorToast("product Name Required !");
-        }
-        else if(productPrice.length===0){
-            errorToast("product Price Required !");
-        }
-        else if(productUnit.length===0){
-            errorToast("product Unit Required !");
-        }
-        else if(!productImg){
+            errorToast("Product Category Required !");
+        } else if(!productImg){
             errorToast("product Image Required !");
-        }
-        else {
+        } else if(productName.length===0){
+            errorToast("product Name Required !");
+        } else if(productType.length===0){
+            errorToast("product Type Required !");
+        } else if(productDescription.length===0){
+            errorToast("product Description Required !");
+        } else if(productPrice.length===0){
+            errorToast("product Price Required !");
+        } else if(productUnit.length===0){
+            errorToast("product Unit Required !");
+        }  else {
             document.getElementById('modal-close').click();
 
             let formData = new FormData();
+            formData.append('category_id',productCategory)
             formData.append('img',productImg)
             formData.append('name',productName)
+            formData.append('type',productType)
+            formData.append('description',productDescription)
             formData.append('price',productPrice)
             formData.append('unit',productUnit)
-            formData.append('category_id',productCategory)
+            formData.append('is_active',productActiveStatus)
 
             const config = {
                 header:{

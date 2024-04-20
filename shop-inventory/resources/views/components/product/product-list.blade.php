@@ -22,8 +22,11 @@
                         <tr class="bg-light">
                             <th>Image</th>
                             <th>Name</th>
+                            <th>Type</th>
+                            <th>Description</th>
                             <th>Price</th>
                             <th>Unit</th>
+                            <th>Status</th>
                             <th>Action</th>
                         </tr>
                         </thead>
@@ -56,14 +59,21 @@
         tableList.empty();// Destroy the existing DataTable instance
 
         res.data.forEach(function (item, index) {
+            // Determine the status text and badge class based on 'is_active' value
+            let statusText = item['is_active'] === 1 ? 'Active' : 'Inactive';
+            let badgeClass = item['is_active'] === 1 ? 'success' : 'danger';
+
             let row = `<tr>
                             <td><img class="w-25 h-auto" src="${item['img_url']}" alt="image"></td>
                             <td>${item['name']}</td>
+                            <td>${item['type']}</td>
+                            <td>${item['description']}</td>
                             <td>${item['price']}</td>
                             <td>${item['unit']}</td>
+                            <td><span class="badge badge-${badgeClass}">${statusText}</span></td>
                             <td>
-                                <button data-path="${item['img_url']}" data-id="${item['id']}" class="btn btn-sm text-white mx-2 editBtn" style="background-image: linear-gradient(to top, rgb(0, 34, 141), rgb(37, 93, 157))">Edit</button>
-                                <button data-path="${item['img_url']}" data-id="${item['id']}" class="btn btn-sm text-white deleteBtn" style="background-image: linear-gradient(to top, rgb(141, 0, 0), rgb(157, 37, 37))">Delete</button>
+                                <button data-path="${item['img_url']}" data-id="${item['id']}" class="btn btn-sm text-white mx-2 my-auto editBtn" style="background-image: linear-gradient(to top, rgb(0, 34, 141), rgb(37, 93, 157))">Edit</button>
+                                <button data-path="${item['img_url']}" data-id="${item['id']}" class="btn btn-sm text-white my-auto deleteBtn" style="background-image: linear-gradient(to top, rgb(141, 0, 0), rgb(157, 37, 37))">Delete</button>
                             </td>
                         </tr>`
             tableList.append(row);
@@ -87,6 +97,7 @@
         });
 
         new DataTable('#tableData', {
+            scrollX: true,
             responsive: true,
             order: [[0,'desc']],
             lengthMenu: [5,10,15,20,30]

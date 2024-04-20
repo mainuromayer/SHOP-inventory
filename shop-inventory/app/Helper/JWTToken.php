@@ -16,7 +16,7 @@ class JWTToken
             'iat'=>time(),
             'exp'=>time()+60*60, // 60 minute
             'userEmail'=>$userEmail,
-            'userID'=>$userID
+            'userID'=>$userID,
         ];
         return JWT::encode($payload, $key, 'HS256');
     }

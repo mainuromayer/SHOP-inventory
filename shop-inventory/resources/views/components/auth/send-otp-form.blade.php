@@ -5,7 +5,7 @@
             <div class="col-lg-6 mx-2">
                 <div style="border-radius: 15px;" class="card bg-white p-5">
                     <div class="card-body px-5">
-
+                        @csrf
                         <form action="" class="mb-md-5 mt-md-4">
 
                             <h2 class="mb-2">Send OTP</h2>
@@ -15,11 +15,11 @@
                             <!-- email start -->
                             <div class="form-email form-outline form-white mb-4 d-flex">
                                 <span class="icon-envelope"></span>
-                                <input type="email" id="email" class="" placeholder="E-mail Address">
+                                <input type="email" id="email" name="email" class="" placeholder="E-mail Address">
                             </div>
                             <!-- email end -->
 
-                            <button onclick="SendOTP()"  type="submit" style="font-size: 20px;border: none;width: 100%;height: 50px;border-radius: 15px;background-image: linear-gradient(to right, #0c0958, #00228d, #255d9d);color: #fff;font-weight: 500;">
+                            <button onclick="SendOTP()" type="submit" style="font-size: 20px;border: none;width: 100%;height: 50px;border-radius: 15px;background-image: linear-gradient(to right, #0c0958, #00228d, #255d9d);color: #fff;font-weight: 500;">
                                 Next
                             </button>
 
@@ -40,7 +40,7 @@
 <script>
     async function SendOTP(){
         event.preventDefault();
-        let email =  document.getElementById('email').value;
+        let email = document.getElementById('email').value;
         if (email.length === 0){
             errorToast('Enter your email Address');
         }

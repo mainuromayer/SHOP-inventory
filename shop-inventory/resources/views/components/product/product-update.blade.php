@@ -11,20 +11,31 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-12 p-1">
-
                                 <label class="form-label">Category</label>
                                 <select type="text" class="form-control form-select" id="productCategoryUpdate">
                                     <option value="">Select Category</option>
                                 </select>
 
-                                <label class="form-label mt-2">Name</label>
+                                <label class="form-label mt-2">Product Name</label>
                                 <input type="text" class="form-control" id="productNameUpdate">
 
-                                <label class="form-label mt-2">Price</label>
+                                <label class="form-label mt-2">Product Type</label>
+                                <input type="text" class="form-control" id="productTypeUpdate">
+
+                                <label class="form-label">Product Description</label>
+                                <textarea class="w-100" id="productDescriptionUpdate"></textarea>
+
+                                <label class="form-label mt-2">Product Price</label>
                                 <input type="text" class="form-control" id="productPriceUpdate">
 
-                                <label class="form-label mt-2">Unit</label>
+                                <label class="form-label mt-2">Product Unit</label>
                                 <input type="text" class="form-control" id="productUnitUpdate">
+
+                                <label>Product Status</label>
+                                <select class="form-control form-select" id="productActiveStatusUpdate">
+                                    <option value="1">Active</option>
+                                    <option value="0">Inactive</option>
+                                </select>
 
                                 <br/>
                                 <img class="w-15" id="oldImg" src="{{asset('images/default-img.jpg')}}"/>
@@ -35,8 +46,6 @@
 
                                 <input type="text" class="d-none form-control" id="updateID" readonly>
                                 <input type="text" class="d-none form-control" id="filePath" readonly>
-
-
                             </div>
                         </div>
                     </div>
@@ -73,66 +82,76 @@
         hideLoader();
 
         document.getElementById('productNameUpdate').value = res.data['name'];
+        document.getElementById('productTypeUpdate').value = res.data['type'];
+        document.getElementById('productDescriptionUpdate').value = res.data['description'];
         document.getElementById('productPriceUpdate').value = res.data['price'];
         document.getElementById('productUnitUpdate').value = res.data['unit'];
+        document.getElementById('productActiveStatusUpdate').value = res.data['is_active'];
         document.getElementById('productCategoryUpdate').value = res.data['category_id'];
     }
 
 
     async function Update() {
         let productCategoryUpdate = document.getElementById('productCategoryUpdate').value;
-        let productNameUpdate = document.getElementById('productNameUpdate').value;
-        let productPriceUpdate = document.getElementById('productPriceUpdate').value;
-        let productUnitUpdate = document.getElementById('productUnitUpdate').value;
         let updateID = document.getElementById('updateID').value;
         let filePath = document.getElementById('filePath').value;
         let productImgUpdate = document.getElementById('productImgUpdate').files[0];
 
+        let productNameUpdate = document.getElementById('productNameUpdate').value;
+        let productTypeUpdate = document.getElementById('productTypeUpdate').value;
+        let productDescriptionUpdate = document.getElementById('productDescriptionUpdate').value;
+        let productPriceUpdate = document.getElementById('productPriceUpdate').value;
+        let productUnitUpdate = document.getElementById('productUnitUpdate').value;
+        let productActiveStatusUpdate = document.getElementById('productActiveStatusUpdate').value;
+
 
         if (productCategoryUpdate.length === 0) {
             errorToast("product Category Required!")
-        }
-        else if(productNameUpdate.length===0){
+        } else if(productNameUpdate.length===0){
             errorToast("product Name Required!")
-        }
-        else if(productPriceUpdate.length===0){
+        } else if(productTypeUpdate.length===0){
+            errorToast("product Type Required!")
+        } else if(productPriceUpdate.length===0){
             errorToast("product Price Required!")
-        }
-        else if(productUnitUpdate.length===0){
+        } else if(productUnitUpdate.length===0){
             errorToast("product Unit Required!")
-        }
-        else {
+        } else if(productActiveStatusUpdate.length===0){
+            errorToast("product Active Status Required!")
+        } else {
             document.getElementById('update-modal-close').click();
 
             let formData = new FormData();
-            formData.append('img',productImgUpdate)
+            formData.append('img', productImgUpdate)
             formData.append('id',updateID)
             formData.append('name',productNameUpdate)
+            formData.append('type',productTypeUpdate)
+            formData.append('description',productDescriptionUpdate)
             formData.append('price',productPriceUpdate)
             formData.append('unit',productUnitUpdate)
-            formData.append('category_id',productCategoryUpdate)
-            formData.append('file_path',filePath)
+            formData.append('is_active', productActiveStatusUpdate);
+            formData.append('category_id', productCategoryUpdate)
+            formData.append('file_path', filePath)
 
             const config = {
-                header:{
-                    'content-type':'multipart/form-data'
+                header: {
+                    'content-type': 'multipart/form-data'
                 }
             }
 
             showLoader();
-            let res = await axios.post('/update-product',formData,config)
+            let res = await axios.post('/update-product', formData, config)
             hideLoader();
 
-            if (res.status === 200 && res.data === 1){
+            if (res.status === 200 && res.data === 1) {
                 successToast('Product Updated');
 
                 document.getElementById('update-form').reset();
 
                 await getList();
-            }
-            else{
+            } else {
                 errorToast('Request Fail!');
             }
         }
     }
+
 </script>

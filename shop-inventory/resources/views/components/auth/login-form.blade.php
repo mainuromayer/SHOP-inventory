@@ -7,7 +7,7 @@
                     <div class="card-body px-5">
 
                         <form action="" method="get" class="mb-md-5 mt-md-4">
-
+                            @csrf
                             <h2 class="mb-2">Login</h2>
                             <p class="mb-5" style="font-size: 14px;color: #707070;font-weight: 500;">Enter your
                                 details below to continue</p>
@@ -15,16 +15,16 @@
                             <!-- email start  -->
                             <div class="form-email form-outline form-white mb-4 d-flex">
                                 <span class="icon-envelope"></span>
-                                <input type="email" id="email" class="" placeholder="E-mail Address">
+                                <input type="email" id="email" name="email" class="" placeholder="E-mail Address">
                             </div>
                             <!-- email end -->
 
                             <!-- password start -->
                             <div class="form-password form-outline form-white mb-4 d-flex">
                                 <span class="icon-lock"></span>
-                                <input type="password" id="password" class="" placeholder="Password">
+                                <input type="password" id="password" name="password" class="" placeholder="Password">
                                 <label for="password">
-                                    <i onclick="togglePasswordVisibility()" class="eye_open fas fa-eye-slash" style="position: relative;top: 15px;"></i>
+                                    <i onclick="togglePasswordVisibility()" class="eye_open fas fa-eye-slash" style="position: relative;top: 15px; cursor:pointer;"></i>
                                 </label>
                             </div>
                             <!-- password end -->
@@ -36,7 +36,7 @@
                                     &nbsp; Remember me</label>
                             </div> -->
                             <!-- remember end -->
-                            
+
 
                             <button onclick="SubmitLogin()"  type="submit" style="font-size: 20px;border: none;width: 100%;height: 50px;border-radius: 15px;background-image: linear-gradient(to right, #0c0958, #00228d, #255d9d);color: #fff;font-weight: 500;">
                                 Login
@@ -77,6 +77,7 @@
         }
     }
 </script>
+
 <script>
     async function SubmitLogin(){
         event.preventDefault();
@@ -90,18 +91,23 @@
         }else if(password.length === 0){
             errorToast('Password is required');
         }else{
-            showLoader();
-            let res = await axios.post("/user-login",{email:email, password:password});
-            hideLoader();
+            try {
+                showLoader();
+                let res = await axios.post("/user-login",{email:email, password:password});
+                hideLoader();
 
-            if(res.status === 200 && res.data['status'] === 'success') {
-                successToast(res.data['message']);
-                setTimeout(function(){
-                    window.location.href = '/dashboard';
-                }, 200)
-            }
-            else{
-                errorToast(res.data['message']);
+                if(res.status === 200 && res.data['status'] === 'success') {
+                    successToast(res.data['message']);
+                    setTimeout(function(){
+                        window.location.href = '/dashboard';
+                    }, 200)
+                }
+                else{
+                    errorToast(res.data['message']);
+                }
+            }catch (e) {
+                hideLoader();
+                errorToast('An error occurred during login');
             }
         }
     }

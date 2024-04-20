@@ -20,7 +20,7 @@
 
     <link rel="stylesheet" href="{{asset('/css/toastify.min.css')}}">
     <script src="{{asset('/js/config.js')}}"></script>
-    <script src="{{asset('/js/toastify-js.js')}}"></script>
+    <script src="{{asset('/js/toastify.min.js')}}"></script>
     <script src="{{asset('/js/axios.min.js')}}"></script>
 </head>
 <body>
@@ -38,7 +38,7 @@
     <script src="{{asset('/js/owl.carousel.js')}}"></script>
     <script src="{{asset('/js/owl.carousel.min.js')}}"></script>
     <script src="{{asset('/js/jquery.sticky.js')}}"></script>
-    <script src="{{asset('/js/main.js')}}"></script>
+{{--    <script src="{{asset('/js/main.js')}}"></script>--}}
     <script src="{{asset('/js/bootstrap.min.js')}}"></script>
     <script src="{{asset('/js/popper.min.js')}}"></script>
 </body>

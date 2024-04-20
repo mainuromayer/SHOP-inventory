@@ -57,7 +57,7 @@
                 <!-- nav-item-5 | sale start -->
                 <li class="nav-item">
                     <a href="{{ url('/salePage') }}" class="nav-link mb-2">
-                        <i class="fa-solid fa-dollar-sign nav-icon"></i>
+                        <i class="fa-solid fa-bangladeshi-taka-sign nav-icon"></i>
                         <p>Create Sale</p>
                     </a>
                 </li>
@@ -80,7 +80,7 @@
                     </a>
                 </li>
                 <!-- nav-item-7 | report end -->
-                
+
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
@@ -88,6 +88,8 @@
     <!-- sidebar end -->
 </aside>
 <!-- SIDEBAR END ========================= -->
+
+
 
 
 
@@ -163,6 +165,4 @@
         }
     });
 </script>
-
-
 

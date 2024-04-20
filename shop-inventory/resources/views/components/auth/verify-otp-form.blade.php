@@ -5,7 +5,7 @@
             <div class="col-lg-6 mx-2">
                 <div style="border-radius: 15px;" class="card bg-white p-5">
                     <div class="card-body px-5">
-
+                        @csrf
                         <form action="" class="mb-md-5 mt-md-4">
 
                             <h2 class="mb-2">OTP VERIFICATION</h2>

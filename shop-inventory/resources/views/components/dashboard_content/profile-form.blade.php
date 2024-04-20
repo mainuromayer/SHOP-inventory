@@ -26,10 +26,6 @@
                                 <label for="phone">Phone</label>
                                 <input type="number" class="form-control" id="phone" placeholder="Phone">
                             </div>
-                            <div class="form-group">
-                                <label for="password">Password</label>
-                                <input type="password" class="form-control" id="password" placeholder="Password">
-                            </div>
                         </div>
 
                         <div class="card-footer">
@@ -42,6 +38,18 @@
     </div>
 </section>
 <!-- PROFILE FORM END ========================= -->
+
+<script>
+    function showPass (){
+        document.getElementById('showPassword').onclick = function() {
+            if (this.checked) {
+                document.getElementById('password').type = "text";
+            } else {
+                document.getElementById('password').type = "password";
+            }
+        };
+    }
+</script>
 
 
 <script>
@@ -56,19 +64,18 @@
             document.getElementById('lastName').value=data['lastName'];
             document.getElementById('phone').value=data['phone'];
             document.getElementById('email').value=data['email'];
-            document.getElementById('password').value=data['password'];
         }
         else{
             errorToast(res.data['message']);
         }
     }
 
+
     async function onUpdate(){
         event.preventDefault();
         let firstName = document.getElementById('firstName').value;
         let lastName = document.getElementById('lastName').value;
         let phone = document.getElementById('phone').value;
-        let password = document.getElementById('password').value;
 
         if(firstName.length === 0){
             errorToast('First Name is required');
@@ -76,15 +83,12 @@
             errorToast('Last Name is required');
         }else if(phone.length === 0){
             errorToast('Phone Number is required');
-        }else if(password.length === 0){
-            errorToast('Password is required');
         }else{
             showLoader();
             let res = await axios.post("/user-update",{
                 firstName:firstName,
                 lastName:lastName,
                 phone:phone,
-                password:password
             });
             hideLoader();
 

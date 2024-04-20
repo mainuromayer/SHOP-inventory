@@ -31,14 +31,14 @@
 <script>
     async function Save(){
         let categoryName = document.getElementById('categoryName').value;
+
         if (categoryName.length === 0) {
-            errorToast("Category Required !")
-        }
-        else {
+            errorToast("Category Name Required !")
+        } else {
             document.getElementById('modal-close').click();
 
             showLoader();
-            let res = await axios.post('/create-category',{name:categoryName})
+            let res = await axios.post('/create-category',{name:categoryName});
             hideLoader();
 
             if (res.status === 201){
@@ -54,36 +54,4 @@
             }
         }
     }
-</script>
-
-
-<script>
-        // ---------------------------------------------------------------------------------
-    // document.getElementById("save-btn").addEventListener('click',async function(){
-    //     let categoryName = document.getElementById('categoryName').value;
-    //
-    //     if (categoryName.length === 0){
-    //         errorToast("Category Required !");
-    //     }
-    //     else {
-    //         document.getElementById('modal-close').click();
-    //
-    //         showLoader();
-    //         let res = await axios.post('/create-category',{name:categoryName})
-    //         hideLoader();
-    //
-    //         if (res.status === 201){
-    //
-    //             successToast('Request Completed');
-    //
-    //             document.getElementById('save-form').reset();
-    //
-    //             await getList();
-    //         }
-    //         else {
-    //             errorToast('Request Fail !');
-    //         }
-    //     }
-    // })
-    // ---------------------------------------------------------------------------------
 </script>

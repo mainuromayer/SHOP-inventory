@@ -13,31 +13,38 @@ class ProductController extends Controller
         return view('pages.dashboard.product-page');
     }
 
-    function CreateProduct(Request $request){
-        $user_id = $request->header('id');
+        function CreateProduct(Request $request){
+            $user_id = $request->header('id');
 
-        // Prepare File Name & Path
-        $img = $request->file('img');
+            // Delete Old File
+            $filePath = $request->input('file_path');
+            File::delete($filePath);
 
-        $time = time();
-        $file_name = $img->getClientOriginalName();
-        $img_name = "{$user_id}-{$time}-{$file_name}";
-        $img_url = "images/uploads/{$img_name}";
+            // Prepare File Name & Path
+            $img = $request->file('img');
 
-        // Upload File
-        $img->move(public_path('images/uploads'),$img_name);
+            $time = time();
+            $file_name = $img->getClientOriginalName();
+            $img_name = "{$user_id}-{$time}-{$file_name}";
+            $img_url = "images/uploads/{$img_name}";
+
+            // Upload File
+            $img->move(public_path('images/uploads'),$img_name);
 
 
-        // Save to Database
-        return Product::create([
-            'name'=>$request->input('name'),
-            'price'=>$request->input('price'),
-            'unit'=>$request->input('unit'),
-            'img_url'=>$img_url,
-            'category_id'=>$request->input('category_id'),
-            'user_id'=>$user_id
-        ]);
-    }
+            // Save to Database
+            return Product::create([
+                'user_id'=>$user_id,
+                'category_id'=>$request->input('category_id'),
+                'img_url'=>$img_url,
+                'name'=>$request->input('name'),
+                'type'=>$request->input('type'),
+                'description'=>$request->input('description'),
+                'price'=>$request->input('price'),
+                'unit'=>$request->input('unit'),
+                'is_active' => $request->input('is_active')
+            ]);
+        }
 
     function ProductDelete(Request $request){
         $user_id = $request->header('id');
@@ -81,19 +88,24 @@ class ProductController extends Controller
 
             // Update Product
             return Product::where('id',$product_id)->where('user_id',$user_id)->update([
+                'category_id'=>$request->input('category_id'),
+                'img_url'=>$img_url,
                 'name'=>$request->input('name'),
+                'type'=>$request->input('type'),
+                'description'=>$request->input('description'),
                 'price'=>$request->input('price'),
                 'unit'=>$request->input('unit'),
-                'img_url'=>$img_url,
-                'category_id'=>$request->input('category_id')
+                'is_active' => $request->input('is_active')
             ]);
         }
         else{
             return Product::where('id',$product_id)->where('user_id',$user_id)->update([
+                'category_id'=>$request->input('category_id'),
                 'name'=>$request->input('name'),
+                'type'=>$request->input('type'),
                 'price'=>$request->input('price'),
                 'unit'=>$request->input('unit'),
-                'category_id'=>$request->input('category_id')
+                'is_active' => $request->input('is_active')
             ]);
         }
 

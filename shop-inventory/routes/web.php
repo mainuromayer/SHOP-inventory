@@ -5,6 +5,7 @@ use App\Http\Controllers\CustomerController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\InvoiceController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ReportController;
 use App\Http\Controllers\UserController;
 use App\Http\Middleware\TokenVerificationMiddleware;
 use Illuminate\Support\Facades\Route;
@@ -74,6 +75,9 @@ Route::get('/invoicePage',[InvoiceController::class,'InvoicePage'])
     ->middleware(TokenVerificationMiddleware::class);
 
 Route::get('/salePage',[InvoiceController::class,'SalePage'])
+    ->middleware(TokenVerificationMiddleware::class);
+
+Route::get('/reportPage',[ReportController::class,'ReportPage'])
     ->middleware(TokenVerificationMiddleware::class);
 
 
@@ -148,3 +152,9 @@ Route::post('/invoice-details',[InvoiceController::class,'InvoiceDetails'])
 
 Route::post('/invoice-delete',[InvoiceController::class,'InvoiceDelete'])
     ->middleware(TokenVerificationMiddleware::class);
+
+
+
+// SUMMARY & Report
+Route::get("/summary",[DashboardController::class,'Summary'])->middleware(TokenVerificationMiddleware::class);
+Route::get("/sales-report/{FormDate}/{ToDate}",[ReportController::class,'SalesReport'])->middleware(TokenVerificationMiddleware::class);

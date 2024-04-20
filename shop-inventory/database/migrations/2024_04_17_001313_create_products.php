@@ -11,24 +11,25 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('invoice_products', function (Blueprint $table) {
+        Schema::create('products', function (Blueprint $table) {
             $table->id();
 
-            $table->unsignedBigInteger('invoice_id');
-            $table->unsignedBigInteger('product_id');
             $table->unsignedBigInteger('user_id');
+            $table->unsignedBigInteger('category_id');
 
-            $table->string('qty',50);
-            $table->string('sale_price',50);
-
-
-            $table->foreign('invoice_id')->references('id')->on('invoices')
-                ->cascadeOnUpdate()->restrictOnDelete();
-            $table->foreign('product_id')->references('id')->on('products')
-                ->cascadeOnUpdate()->restrictOnDelete();
             $table->foreign('user_id')->references('id')->on('users')
                 ->cascadeOnUpdate()->restrictOnDelete();
 
+            $table->foreign('category_id')->references('id')->on('categories')
+                ->cascadeOnUpdate()->restrictOnDelete();
+
+            $table->string('img_url',100);
+            $table->string('name',100);
+            $table->string('type',100);
+            $table->string('description');
+            $table->string('price',100);
+            $table->string('unit',50);
+            $table->boolean('is_active');
 
             $table->timestamp('created_at')->useCurrent();
             $table->timestamp('updated_at')->useCurrent()->useCurrentOnUpdate();
@@ -40,6 +41,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('invoice_products');
+        Schema::dropIfExists('products');
     }
 };

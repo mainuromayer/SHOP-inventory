@@ -11,9 +11,10 @@
                     <div class="container">
                         <div class="row">
                             <div class="col-12 p-1">
+                                <input class="d-none form-control" id="updateID" readonly>
+
                                 <label class="form-label">Category Name *</label>
                                 <input type="text" class="form-control" id="categoryNameUpdate">
-                                <input class="d-none form-control" id="updateID" readonly>
                             </div>
                         </div>
                     </div>
@@ -45,16 +46,15 @@
     }
 
     async function Update() {
-        let categoryName = document.getElementById('categoryNameUpdate').value;
+        let categoryNameUpdate = document.getElementById('categoryNameUpdate').value;
         let updateID = document.getElementById('updateID').value;
 
-        if (categoryName.length === 0){
-            errorToast('Category Required!');
-        }
-        else {
+        if (categoryNameUpdate.length === 0){
+            errorToast('Category Name Required!');
+        } else {
             document.getElementById('update-modal-close').click();
             showLoader();
-            let res = await axios.post('/update-category',{name:categoryName, id:updateID})
+            let res = await axios.post('/update-category',{name:categoryNameUpdate, id:updateID})
             hideLoader();
 
             if (res.status === 200 && res.data === 1){
